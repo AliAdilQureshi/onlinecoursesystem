@@ -1,3 +1,28 @@
 from django.contrib import admin
+from courses.models.course import Course, Learning, Prerequisite, Tag
 
-# Register your models here.
+from courses.models.video import Video
+
+
+class TagAdmin(admin.TabularInline):
+    model = Tag
+
+
+class VideoAdmin(admin.TabularInline):
+    model = Video
+
+
+class LearningAdmin(admin.TabularInline):
+    model = Learning
+
+
+class PrerequisiteAdmin(admin.TabularInline):
+    model = Prerequisite
+
+
+class CourseAdmin(admin.ModelAdmin):
+    inlines = [TagAdmin, LearningAdmin, PrerequisiteAdmin, VideoAdmin]
+
+
+admin.site.register(Course, CourseAdmin)
+admin.site.register(Video)
