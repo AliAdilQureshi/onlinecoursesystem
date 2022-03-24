@@ -12,6 +12,9 @@ class Course(models.Model):
     resource = models.FileField(upload_to = "files/resource")
     length = models.IntegerField(null=False)
 
+    def __str__(self):
+        return self.name
+
 
 # this is inheritance model because same fields
 # are used in three models then we create a parent model

@@ -1,6 +1,9 @@
 from django.shortcuts import HttpResponse
 from django.shortcuts import render
+from courses.models import Course
 
 
 def home(request):
-    return HttpResponse("home....")
+    courses = Course.objects.all()
+
+    return render(request, "courses/index.html", context={'courses':courses})
